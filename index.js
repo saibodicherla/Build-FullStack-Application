@@ -3,14 +3,13 @@ const express = require('express');
 
 //set up express app
 const app = express(); 
+port = process.env.PORT || 4000;
 
 
-app.get('/api', (req, res) => {
-  console.log('GET Request');
-   res.send({name: 'sai'});
-});
+//Initialize Routes
+app.use('/api', require('./routes/api'));
 
 //listen for requests 
-app.listen(process.env.port || 4000, () => {
-    console.log('now listening for your requests');
-});
+app.listen(port);
+console.log('now listening for your requests');
+
